@@ -9,23 +9,29 @@ var getElementsByClassName = function(className){
   var results = [];
 
 
-  var test = function(node) {
+  var testA = function(node) {
     return node !== undefined && node !== null;
   }
+
 
 
   var getEm = function (parent) {
     if (parent.classList.contains(className)) {
       results.push(parent)
     }
-    if (test(parent.nextSibling)) {
-      getEm(parent.nextSibling);
+    console.log(testA(parent.nextElementSibling));
+    if (testA(parent.nextElementSibling)) {
+      getEm(parent.nextElementSibling);
     }
-    if (test(parent.firstChild)){
-      getEm(parent.firstChild)
+    console.log(testA(parent.firstElementChild))
+    if (testA(parent.firstElementChild)){
+      getEm(parent.firstElementChild);
     }
+    return;
   }
+  getEm(parent);
 
-  return results;
+  return results ;
 
 };
+
