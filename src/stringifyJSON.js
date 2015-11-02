@@ -14,5 +14,16 @@ var result = '';
   if(typeof obj === 'string'){
     result = '"' + obj + '"';
   }
+  // case 3 array
+  if(Array.isArray(obj)){
+
+    obj.forEach(function(element, index){
+      result += stringifyJSON(element);
+      if(index < obj.length-1){
+         result += ',';
+      }
+    })
+    result = '[' + result + ']';
+  }
 return result;
-};
+}
