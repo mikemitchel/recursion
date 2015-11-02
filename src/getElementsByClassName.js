@@ -16,19 +16,17 @@ var getElementsByClassName = function(className){
 
 
   var getEm = function (parent) {
-    if (parent.classList.contains(className)) {
+    if (parent.classList && parent.classList.contains(className)) {
       results.push(parent)
     }
-    console.log(testA(parent.nextElementSibling));
-    if (testA(parent.nextElementSibling)) {
-      getEm(parent.nextElementSibling);
-    }
-    console.log(testA(parent.firstElementChild))
-    if (testA(parent.firstElementChild)){
-      getEm(parent.firstElementChild);
-    }
-    return;
-  }
+
+   if (parent.childNodes) {
+     for (var i = 0; i < parent.childNodes.length; i++) {
+         getEm(parent.childNodes[i]);
+     }
+   }
+};
+
   getEm(parent);
 
   return results ;
