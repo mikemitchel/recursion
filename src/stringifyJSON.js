@@ -6,10 +6,13 @@
 var stringifyJSON = function(obj) {
   // your code goes here
 var result = '';
-  //case 1 easy string
-  if(typeof obj === 'string' || typeof obj === 'number') {
+  //case 1 easy number, null, undefined, boolean
+  if(typeof obj === 'number' || obj === null || obj === undefined || typeof obj === 'boolean') {
     result +=  obj;
   }
-  //case 2 number nk
+  //case 2 number string
+  if(typeof obj === 'string'){
+    result = '"' + obj + '"';
+  }
 return result;
 };
