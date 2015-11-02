@@ -11,11 +11,11 @@ var result = '';
     result +=  obj;
   }
   //case 2 number string
-  if(typeof obj === 'string'){
+  else if(typeof obj === 'string'){
     result = '"' + obj + '"';
   }
   // case 3 array
-  if(Array.isArray(obj)){
+  else if(Array.isArray(obj)){
 
     obj.forEach(function(element, index){
       result += stringifyJSON(element);
@@ -24,6 +24,22 @@ var result = '';
       }
     })
     result = '[' + result + ']';
+  }
+  else {
+    var keys = [];
+
+    for(var key in obj) {
+      keys.push(key);
+    }
+    keys.forEach(function(element, index){
+      if(typeof obj[element] !== 'function' && obj[element] !== undefined) {
+        result += stringifyJSON(element) + ':' + stringifyJSON(obj[element]);
+        if(index < keys.length-1){
+           result += ',';
+        }
+      }
+    })
+    result = '{' + result + '}';
   }
 return result;
 }
