@@ -5,4 +5,11 @@
 
 var stringifyJSON = function(obj) {
   // your code goes here
+var result = '';
+  //case 1 easy string
+  if(typeof obj === 'string' || typeof obj === 'number') {
+    result +=  obj;
+  }
+  //case 2 number
+return result;
 };
