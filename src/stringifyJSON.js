@@ -10,6 +10,6 @@ var result = '';
   if(typeof obj === 'string' || typeof obj === 'number') {
     result +=  obj;
   }
-  //case 2 number
+  //case 2 number nk
 return result;
 };
